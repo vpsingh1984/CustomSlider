@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customize Slider</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+	<script type="text/javascript" src="slide.js"></script>
+<style>
+	.container{position: relative;}
+	.bdr{border: 3px solid black; background:gray;}
+	.nextBtn{position: absolute; top:40%; left:1%;}
+	.prevBtn{position: absolute; top:40%; right:1%;}
+	#slider{padding-left:0; padding-right:0;}
+	#slider img{width: 100%; display: block;}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<div id="slider" class="col-sm-8 col-sm-offset-2 bdr">
+	<button id="prevSlide" class="btn btn-primary nextBtn">Prev</button>
+	<button id="nextSlide" class="btn btn-primary prevBtn">Next</button>
+		<img />
+	</div>
+</div>
+	<script>
+		$(document).ready(function(){
+			var element = $('#slider img');
+			var prevBtn = $('#prevSlide');
+			var nextBtn = $('#nextSlide');
+
+			if(imgArray.length){
+				var slider = playSlider(element, imgArray, speed, nextBtn, prevBtn);
+				$(nextBtn).click(function(){
+					slider.nextSlide();
+				});	
+
+				$(prevBtn).click(function(){
+					slider.prevSlide();
+				});
+			}
+			else{
+				nextBtn.hide();
+				prevBtn.hide();
+			}
+		})
+
+		var speed = 2000;
+		var imgArray = getImagesFromDir();
+		function getImagesFromDir(){
+	return ['images/img-1.jpg', 'images/img-2.jpg', 'images/img-3.jpg', 'images/img-4.jpg','images/img-1.jpg', 'images/img-2.jpg', 'images/img-3.jpg', 'images/img-4.jpg'];
+}
+
+	</script>
+
+</body>
+</html>
